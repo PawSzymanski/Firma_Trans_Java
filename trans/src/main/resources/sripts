@@ -1,3 +1,0 @@
-INSERT INTO public.pojazd(
-	"POJ_REJESTRACJA", "POJ_PARKING", "POJ_STAN", id)
-	VALUES ('KR 00000', 'Parking Krowodrza', 'Nowy', 1);
