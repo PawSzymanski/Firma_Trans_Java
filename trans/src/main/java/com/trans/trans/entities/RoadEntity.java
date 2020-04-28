@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Getter
 public class RoadEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kurs-sequence")
-    @SequenceGenerator(name = "kurs-sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kurs_sequence")
+    @SequenceGenerator(name = "kurs_sequence", allocationSize = 1)
     @Column(name = "kur_id", updatable = false, nullable = false)
     private Long id;
 
