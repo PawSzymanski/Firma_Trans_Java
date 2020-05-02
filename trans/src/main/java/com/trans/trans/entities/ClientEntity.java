@@ -33,9 +33,6 @@ public class ClientEntity {
     @Column(name = "kli_data_ur")
     private LocalDate birthday;
 
-    @Column(name = "kli_litrow")
-    private Long liters;
-
     @Column(name = "kli_email")
     private String email;
 
