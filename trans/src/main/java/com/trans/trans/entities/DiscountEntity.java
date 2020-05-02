@@ -23,6 +23,6 @@ public class DiscountEntity {
     @Column(name = "zni_opis")
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    List<ClientEntity> client;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    List<ClientEntity> client;
 }

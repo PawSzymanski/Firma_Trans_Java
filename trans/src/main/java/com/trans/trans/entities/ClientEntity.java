@@ -45,8 +45,8 @@ public class ClientEntity {
     @Column(name = "kli_blokada")
     private Boolean isBlocked;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    List<DiscountEntity> discounts;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    List<DiscountEntity> discounts;
 
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    List<RewardEntity> rewards;

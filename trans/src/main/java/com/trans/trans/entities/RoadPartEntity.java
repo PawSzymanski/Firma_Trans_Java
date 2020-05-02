@@ -22,10 +22,10 @@ public class RoadPartEntity {
     @Column(name = "odc_odleglosc")
     private Double distance;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private StopEntity endStop;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private StopEntity startStop;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private StopEntity endStop;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private StopEntity startStop;
 
 }
