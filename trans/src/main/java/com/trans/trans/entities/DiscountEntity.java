@@ -26,8 +26,8 @@ public class DiscountEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "kli_na_zni",
-            joinColumns = { @JoinColumn(name = "kli_klient") },
-            inverseJoinColumns = { @JoinColumn(name = "zni_znizka") }
+            joinColumns = { @JoinColumn(name = "zni_znizka") },
+            inverseJoinColumns = { @JoinColumn(name = "kli_klient") }
     )
     List<ClientEntity> client;
 }

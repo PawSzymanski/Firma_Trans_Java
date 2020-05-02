@@ -53,9 +53,11 @@ public class ClientEntity {
     )
     List<DiscountEntity> discounts;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    List<DiscountEntity> discounts;
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    List<RewardEntity> rewards;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "nag_na_kli",
+            joinColumns = { @JoinColumn(name = "kli_klient") },
+            inverseJoinColumns = { @JoinColumn(name = "zni_nagroda") }
+    )
+    List<LoyalitySystemEntity> rewards;
 }
