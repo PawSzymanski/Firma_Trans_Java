@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "pracownik")
@@ -40,4 +41,12 @@ public class EmployeeEntity {
 
     @Column(name = "pra_stanowisko")
     private String employeePosition;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "poj_na_pra",
+            joinColumns = { @JoinColumn(name = "pra_pracownik") },
+            inverseJoinColumns = { @JoinColumn(name = "poj_pojazd") }
+    )
+    List<VehicleEntity> vehicle;
 }

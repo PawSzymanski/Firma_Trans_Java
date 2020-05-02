@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "miejsce")
@@ -24,4 +25,12 @@ public class PlaceEntity {
 
     @Column(name = "poj_pojazd")
     String vehicle;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "mie_na_rez",
+            joinColumns = { @JoinColumn(name = "mie_miejsce") },
+            inverseJoinColumns = { @JoinColumn(name = "rez_rezerwacja") }
+    )
+    List<ReservationEntity> reservation;
 }

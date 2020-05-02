@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "nagroda")
@@ -24,4 +25,12 @@ public class LoyalitySystemEntity {
 
     @Column(name = "zni_znizka")
     int discountId;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "nag_na_kli",
+            joinColumns = { @JoinColumn(name = "zni_nagroda") },
+            inverseJoinColumns = { @JoinColumn(name = "kli_klient") }
+    )
+    List<LoyalitySystemEntity> rewards;
 }
