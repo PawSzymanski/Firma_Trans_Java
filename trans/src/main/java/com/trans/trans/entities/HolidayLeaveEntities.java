@@ -1,6 +1,5 @@
 package com.trans.trans.entities;
 
-import jdk.vm.ci.meta.Local;
 import lombok.Getter;
 import lombok.Setter;
 

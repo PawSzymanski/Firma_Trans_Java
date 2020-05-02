@@ -45,6 +45,14 @@ public class ClientEntity {
     @Column(name = "kli_blokada")
     private Boolean isBlocked;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "kli_na_zni",
+            joinColumns = { @JoinColumn(name = "kli_klient") },
+            inverseJoinColumns = { @JoinColumn(name = "zni_znizka") }
+    )
+    List<DiscountEntity> discounts;
+
 //    @ManyToMany(fetch = FetchType.LAZY)
 //    List<DiscountEntity> discounts;
 
