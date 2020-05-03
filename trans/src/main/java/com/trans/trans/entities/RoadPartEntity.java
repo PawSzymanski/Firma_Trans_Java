@@ -1,5 +1,6 @@
 package com.trans.trans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,10 +23,12 @@ public class RoadPartEntity {
     @Column(name = "odc_odleglosc")
     private Double distance;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private StopEntity endStop;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private StopEntity startStop;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StopEntity endStop;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StopEntity startStop;
 
 }
