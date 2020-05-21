@@ -18,7 +18,7 @@ public class RoadEntity {
     private Long id;
 
     @Column(name = "kur_data")
-    private LocalDate road;
+    private LocalDate roadDate;
 
     @Column(name = "poj_pojazd")
     private String vehicle;

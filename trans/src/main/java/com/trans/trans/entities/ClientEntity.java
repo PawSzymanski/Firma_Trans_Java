@@ -1,5 +1,6 @@
 package com.trans.trans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,6 +43,7 @@ public class ClientEntity {
     @Column(name = "kli_blokada")
     private Boolean isBlocked;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "kli_na_zni",
@@ -50,6 +52,7 @@ public class ClientEntity {
     )
     private List<DiscountEntity> discounts;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "kli_na_rol",
@@ -58,6 +61,7 @@ public class ClientEntity {
     )
     private List<RoleEntity> roles;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "nag_na_kli",
