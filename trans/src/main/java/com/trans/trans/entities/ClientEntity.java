@@ -52,8 +52,7 @@ public class ClientEntity {
     )
     private List<DiscountEntity> discounts;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "kli_na_rol",
             joinColumns = { @JoinColumn(name = "kli_klient") },

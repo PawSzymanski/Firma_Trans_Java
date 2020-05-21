@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface RoadPartJpa extends JpaRepository<RoadPartEntity, Long> {
 
-    List<RoadPartEntity> findAllByStartStop_NameLikeAndEndStop_NameLike(String start, String stop);
+    List<RoadPartEntity> findAllByStartStop_NameContainingAndEndStop_NameContaining(String start, String stop);
 }

@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class ReservationDto implements Serializable {
+public class LoginDto implements Serializable {
 
+    private String login;
+
+    private String password;
 }

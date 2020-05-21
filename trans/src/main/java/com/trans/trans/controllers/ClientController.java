@@ -1,11 +1,11 @@
 package com.trans.trans.controllers;
 
+import com.trans.trans.dto.LoginDto;
 import com.trans.trans.entities.ClientEntity;
 import com.trans.trans.entities.RoleEntity;
-import com.trans.trans.entities.VehicleEntity;
 import com.trans.trans.jpa.ClientsJpa;
 import com.trans.trans.jpa.RoleJpa;
-import com.trans.trans.jpa.VehicleJpa;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,19 +25,31 @@ public class ClientController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<ClientEntity>> all(){
+    public ResponseEntity<List<ClientEntity>> all() {
         return ResponseEntity.ok(clientsJpa.findAll());
     }
 
     @GetMapping("/roles/{userId}")
-    public ResponseEntity<List<RoleEntity>> getRolesByUserId(@PathVariable Long userId){
-        return ResponseEntity.ok(roleJpa.getAllByUserId(userId));
+    public ResponseEntity<List<RoleEntity>> getRolesByUserId(@PathVariable Long userId) {
+        return ResponseEntity.ok(roleJpa.findAllByUser(userId));
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client){
+    public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client) {
         clientsJpa.save(client);
         return ResponseEntity.ok(client);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ClientEntity> add(@RequestBody LoginDto loginDto) {
+        ClientEntity client = clientsJpa.findByLogin(loginDto.getLogin());
+        if (client == null) {
+            return new ResponseEntity("no user in database", HttpStatus.FORBIDDEN);
+        }
+        if (client.getPassword().equals(loginDto.getPassword())) {
+            return ResponseEntity.ok(client);
+        }
+        return new ResponseEntity("bad password", HttpStatus.FORBIDDEN);
     }
 
 }

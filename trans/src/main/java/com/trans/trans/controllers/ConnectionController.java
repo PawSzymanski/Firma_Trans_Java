@@ -22,6 +22,6 @@ public class ConnectionController {
 
     @GetMapping("/{start}/to/{end}")
     public ResponseEntity<List<RoadPartEntity>> getById(@PathVariable String start, @PathVariable String end) {
-        return ResponseEntity.ok(roadPartJpa.findAllByStartStop_NameLikeAndEndStop_NameLike(start, end));
+        return ResponseEntity.ok(roadPartJpa.findAllByStartStop_NameContainingAndEndStop_NameContaining(start, end));
     }
 }
