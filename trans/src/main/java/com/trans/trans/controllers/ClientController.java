@@ -19,8 +19,9 @@ public class ClientController {
 
     private RoleJpa roleJpa;
 
-    public ClientController(ClientsJpa clientsJpa) {
+    public ClientController(ClientsJpa clientsJpa, RoleJpa roleJpa) {
         this.clientsJpa = clientsJpa;
+        this.roleJpa = roleJpa;
     }
 
     @GetMapping("/all")
@@ -28,9 +29,9 @@ public class ClientController {
         return ResponseEntity.ok(clientsJpa.findAll());
     }
 
-    @GetMapping("/roles")
-    public ResponseEntity<List<RoleEntity>> getRolesByUserId(@RequestParam String userId){
-        return ResponseEntity.ok(roleJpa.findAll());
+    @GetMapping("/roles/{userId}")
+    public ResponseEntity<List<RoleEntity>> getRolesByUserId(@PathVariable Long userId){
+        return ResponseEntity.ok(roleJpa.getAllByUserId(userId));
     }
 
     @PostMapping("/add")
