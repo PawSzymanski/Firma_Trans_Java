@@ -1,13 +1,10 @@
 package com.trans.trans.controllers;
 
-import com.trans.trans.dto.ReservationDto;
 import com.trans.trans.entities.ReservationEntity;
-import com.trans.trans.entities.RoadEntity;
 import com.trans.trans.jpa.ReservationJpa;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController()
