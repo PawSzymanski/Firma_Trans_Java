@@ -34,7 +34,7 @@ public class ReservationController {
     }
 
 
-    @PostMapping("/all")
+    @GetMapping("/all")
     public ResponseEntity<List<ReservationEntity>> all() {
         return ResponseEntity.ok(reservationJpa.findAll());
     }
