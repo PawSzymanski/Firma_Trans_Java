@@ -26,7 +26,7 @@ public class RoleEntity {
             joinColumns = { @JoinColumn(name = "rol_role") },
             inverseJoinColumns = { @JoinColumn(name = "kli_klient") }
     )
-    private List<ClientEntity> userId;
+    private List<ClientEntity> user;
 
     @Column(name = "rol_rola")
     private String location;
