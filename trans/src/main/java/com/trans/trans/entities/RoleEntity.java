@@ -26,7 +26,6 @@ public class RoleEntity {
             joinColumns = { @JoinColumn(name = "rol_role") },
             inverseJoinColumns = { @JoinColumn(name = "kli_klient") }
     )
-    @Column(name = "rol_klient_id")
     private List<ClientEntity> userId;
 
     @Column(name = "rol_rola")
