@@ -1,5 +1,6 @@
 package com.trans.trans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class RoleEntity {
     @Column(name = "rol_id", updatable = false, nullable = false)
     private Long id;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "kli_na_rol",
