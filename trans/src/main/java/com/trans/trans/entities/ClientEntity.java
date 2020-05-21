@@ -48,7 +48,15 @@ public class ClientEntity {
             joinColumns = { @JoinColumn(name = "kli_klient") },
             inverseJoinColumns = { @JoinColumn(name = "zni_znizka") }
     )
-    List<DiscountEntity> discounts;
+    private List<DiscountEntity> discounts;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "kli_na_rol",
+            joinColumns = { @JoinColumn(name = "kli_klient") },
+            inverseJoinColumns = { @JoinColumn(name = "rol_role") }
+    )
+    private List<RoleEntity> roles;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -56,5 +64,5 @@ public class ClientEntity {
             joinColumns = { @JoinColumn(name = "kli_klient") },
             inverseJoinColumns = { @JoinColumn(name = "zni_nagroda") }
     )
-    List<LoyalitySystemEntity> rewards;
+    private List<LoyalitySystemEntity> rewards;
 }
