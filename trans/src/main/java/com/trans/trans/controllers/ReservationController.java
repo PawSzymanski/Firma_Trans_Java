@@ -5,10 +5,7 @@ import com.trans.trans.entities.ReservationEntity;
 import com.trans.trans.entities.RoadEntity;
 import com.trans.trans.jpa.ReservationJpa;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,6 +26,13 @@ public class ReservationController {
         reservationJpa.save(res);
         return ResponseEntity.ok(res);
     }
+
+    @GetMapping("/{userName}")
+    public ResponseEntity<List<ReservationEntity>> add(@PathVariable String userName) {
+        reservationJpa.findAllByClientName(userName);
+        return ResponseEntity.ok(reservationJpa.findAllByClientName(userName));
+    }
+
 
     @PostMapping("/all")
     public ResponseEntity<List<ReservationEntity>> all() {
