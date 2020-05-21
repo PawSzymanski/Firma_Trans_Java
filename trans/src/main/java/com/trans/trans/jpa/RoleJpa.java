@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface RoleJpa  extends JpaRepository<RoleEntity, Long> {
 
-    @Query("select r from RoleEntity r left join ClientEntity c where c.id = ?1")
+    @Query("select r from RoleEntity r left outer join ClientEntity c where c.id = ?1")
     List<RoleEntity> findAllByUser(Long userId);
 }
