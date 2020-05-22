@@ -27,7 +27,6 @@ public class VehicleEntity {
     private String condition;
 
     @ManyToMany(fetch = FetchType.LAZY)
-
     @JoinTable(
             name = "poj_na_pra",
             joinColumns = { @JoinColumn(name = "poj_pojazd") },

@@ -1,6 +1,7 @@
 package com.trans.trans.controllers;
 
 import com.trans.trans.entities.ReservationEntity;
+import com.trans.trans.jpa.LoyalitySystemJpa;
 import com.trans.trans.jpa.ReservationJpa;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,4 @@ public class ReservationController {
     public ResponseEntity<List<ReservationEntity>> all() {
         return ResponseEntity.ok(reservationJpa.findAll());
     }
-
 }
