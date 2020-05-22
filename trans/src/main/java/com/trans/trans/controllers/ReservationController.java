@@ -27,7 +27,7 @@ public class ReservationController {
     public ResponseEntity<ReservationEntity> add(@RequestBody ReservationDto body) {
         ReservationEntity res = new ReservationEntity();
         res.setReservationStatus("UNPAID");
-        res.setRoad(roadPartJpa.getOne(body.getRoadId()));
+        res.setRoad(roadPartJpa.findById(body.getRoadId()).get());
         res.setClientName(body.getClientName());
         reservationJpa.save(res);
         return ResponseEntity.ok(res);
