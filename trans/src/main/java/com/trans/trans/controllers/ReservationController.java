@@ -1,5 +1,6 @@
 package com.trans.trans.controllers;
 
+import com.trans.trans.dto.ReservationDto;
 import com.trans.trans.entities.ReservationEntity;
 import com.trans.trans.jpa.LoyalitySystemJpa;
 import com.trans.trans.jpa.ReservationJpa;
@@ -23,9 +24,11 @@ public class ReservationController {
     }
 
     @PostMapping("/make")
-    public ResponseEntity<ReservationEntity> add(@RequestBody ReservationEntity res) {
+    public ResponseEntity<ReservationEntity> add(@RequestBody ReservationDto body) {
+        ReservationEntity res = new ReservationEntity();
         res.setReservationStatus("UNPAID");
-        res.setRoad(roadPartJpa.getOne(res.getId()));
+        res.setRoad(roadPartJpa.getOne(body.getRoadId()));
+        res.setClientName(body.getClientName());
         reservationJpa.save(res);
         return ResponseEntity.ok(res);
     }
