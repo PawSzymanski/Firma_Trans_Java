@@ -18,16 +18,17 @@ public class ReservationEntity {
     private Long id;
 
     @Column(name = "rez_status")
-    String reservationStatus;
+    private String reservationStatus;
 
     @Column(name = "kli_klient")
-    String clientName;
+    private String clientName;
 
-    @Column(name = "kur_kurs")
-    int roadId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "kur_kurs")
+    private RoadPartEntity road;
 
     @Column(name = "odc_odcinek")
-    int routeSectionId;
+    private int routeSectionId;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
