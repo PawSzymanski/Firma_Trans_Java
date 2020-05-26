@@ -1,5 +1,6 @@
 package com.trans.trans.controllers;
 
+import com.trans.trans.entities.RoadEntity;
 import com.trans.trans.entities.RoadPartEntity;
 import com.trans.trans.jpa.RoadPartJpa;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ConnectionController {
     }
 
     @GetMapping("/{start}/to/{end}")
-    public ResponseEntity<List<RoadPartEntity>> getById(@PathVariable String start, @PathVariable String end) {
+    public ResponseEntity<List<RoadEntity>> getById(@PathVariable String start, @PathVariable String end) {
         return ResponseEntity.ok(roadPartJpa.findAllByStartStop_NameContainingAndEndStop_NameContaining(start, end));
     }
 }
