@@ -1,5 +1,6 @@
 package com.trans.trans.controllers;
 
+import com.trans.trans.dto.NewTripDto;
 import com.trans.trans.entities.RoadEntity;
 import com.trans.trans.entities.RoadPartEntity;
 import com.trans.trans.jpa.RoadPartJpa;
@@ -28,8 +29,13 @@ public class ConnectionController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<RoadEntity> addTrip(@RequestBody RoadEntity r) {
-        return ResponseEntity.ok(tripJpa.save(r));
+    public ResponseEntity<RoadEntity> addTrip(@RequestBody NewTripDto t) {
+        RoadEntity roadEntity = new RoadEntity();
+        roadEntity.setRoadDate(t.getRoadDate());
+        roadEntity.setDriver(t.getDriver());
+        roadEntity.setRoadPart(roadPartJpa.getOne(t.getRoadPartId()));
+        roadEntity.setVehicle(t.getVehicle());
+        return ResponseEntity.ok(tripJpa.save(roadEntity));
     }
 
     @GetMapping("/allTrips")
