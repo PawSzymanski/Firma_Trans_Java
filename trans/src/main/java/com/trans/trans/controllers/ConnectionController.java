@@ -15,8 +15,11 @@ public class ConnectionController {
 
     private TripJpa tripJpa;
 
-    public ConnectionController(TripJpa tripJpa) {
+    private RoadPartJpa roadPartJpa;
+
+    public ConnectionController(TripJpa tripJpa, RoadPartJpa roadPartJpa) {
         this.tripJpa = tripJpa;
+        this.roadPartJpa = roadPartJpa;
     }
 
     @GetMapping("/{start}/to/{end}")
@@ -29,8 +32,13 @@ public class ConnectionController {
         return ResponseEntity.ok(tripJpa.save(r));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<RoadEntity>> all() {
+    @GetMapping("/allTrips")
+    public ResponseEntity<List<RoadEntity>> allTrips() {
         return ResponseEntity.ok(tripJpa.findAll());
+    }
+
+    @GetMapping("/allConnections")
+    public ResponseEntity<List<RoadPartEntity>> allConn() {
+        return ResponseEntity.ok(roadPartJpa.findAll());
     }
 }
