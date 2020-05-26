@@ -13,21 +13,24 @@ import java.util.List;
 @RequestMapping("/api/connection")
 public class ConnectionController {
 
-    private RoadPartJpa roadPartJpa;
     private TripJpa tripJpa;
 
-
-    public ConnectionController(RoadPartJpa roadPartJpa) {
-        this.roadPartJpa = roadPartJpa;
+    public ConnectionController(TripJpa tripJpa) {
+        this.tripJpa = tripJpa;
     }
 
     @GetMapping("/{start}/to/{end}")
     public ResponseEntity<List<RoadEntity>> getById(@PathVariable String start, @PathVariable String end) {
-        return ResponseEntity.ok(roadPartJpa.findAllByStartStop_NameContainingAndEndStop_NameContaining(start, end));
+        return ResponseEntity.ok(tripJpa.findAllByStartStop(start, end));
     }
 
     @PostMapping("/add")
     public ResponseEntity<RoadEntity> addTrip(@RequestBody RoadEntity r) {
         return ResponseEntity.ok(tripJpa.save(r));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<RoadEntity>> all() {
+        return ResponseEntity.ok(tripJpa.findAll());
     }
 }
