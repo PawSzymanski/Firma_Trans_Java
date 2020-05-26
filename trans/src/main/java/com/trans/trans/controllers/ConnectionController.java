@@ -36,6 +36,7 @@ public class ConnectionController {
         roadEntity.setDriver(t.getDriver());
         roadEntity.setRoadPart(roadPartJpa.getOne(t.getRoadPartId()));
         roadEntity.setVehicle(t.getVehicle());
+        tripJpa.save(roadEntity);
         return new ResponseEntity("jest gitez", HttpStatus.CREATED);
     }
 
