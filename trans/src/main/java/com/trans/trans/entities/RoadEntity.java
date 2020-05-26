@@ -1,5 +1,6 @@
 package com.trans.trans.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +27,7 @@ public class RoadEntity {
     @Column(name = "kie_kierowca")
     private String driver;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoadPartEntity.class)
     @JoinColumn(name = "odc_id", insertable = false, updatable = false)
     private RoadPartEntity roadPart;
