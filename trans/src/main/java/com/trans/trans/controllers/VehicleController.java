@@ -23,5 +23,4 @@ public class VehicleController {
             return ResponseEntity.ok(vehicleJpa.findById(id).get());
     }
 
-
 }
