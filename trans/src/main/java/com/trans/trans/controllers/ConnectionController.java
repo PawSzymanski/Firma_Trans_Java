@@ -5,6 +5,7 @@ import com.trans.trans.entities.RoadEntity;
 import com.trans.trans.entities.RoadPartEntity;
 import com.trans.trans.jpa.RoadPartJpa;
 import com.trans.trans.jpa.TripJpa;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,7 @@ public class ConnectionController {
         roadEntity.setDriver(t.getDriver());
         roadEntity.setRoadPart(roadPartJpa.getOne(t.getRoadPartId()));
         roadEntity.setVehicle(t.getVehicle());
-        return ResponseEntity.ok(tripJpa.save(roadEntity));
+        return new ResponseEntity("jest gitez", HttpStatus.CREATED);
     }
 
     @GetMapping("/allTrips")
