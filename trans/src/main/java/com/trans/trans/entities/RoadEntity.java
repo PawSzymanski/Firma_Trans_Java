@@ -27,5 +27,6 @@ public class RoadEntity {
     private String driver;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "odc_id", insertable = false, updatable = false)
     private RoadPartEntity roadPart;
 }
