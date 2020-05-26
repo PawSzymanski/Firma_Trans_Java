@@ -11,8 +11,6 @@ public class LoyalitySystemController {
 
     private LoyalitySystemJpa loyalitySystemJpa;
 
-
-
     public LoyalitySystemController(LoyalitySystemJpa loyalitySystem){ this.loyalitySystemJpa = loyalitySystem;}
 
     @GetMapping("/getpoints/{id}")

@@ -25,4 +25,7 @@ public class RoadEntity {
 
     @Column(name = "kie_kierowca")
     private String driver;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private RoadPartEntity roadPart;
 }
