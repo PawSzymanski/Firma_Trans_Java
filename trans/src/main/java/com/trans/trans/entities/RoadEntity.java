@@ -26,7 +26,7 @@ public class RoadEntity {
     @Column(name = "kie_kierowca")
     private String driver;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoadPartEntity.class)
     @JoinColumn(name = "odc_id", insertable = false, updatable = false)
     private RoadPartEntity roadPart;
 }
