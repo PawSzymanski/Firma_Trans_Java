@@ -28,6 +28,6 @@ public class RoadEntity {
     private String driver;
 
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = RoadPartEntity.class)
-    @JoinColumn(name = "road_part_odc_id", insertable = false, updatable = false)
+    @JoinColumn(name = "road_part_odc_id", insertable = true, updatable = true)
     private RoadPartEntity roadPart;
 }
