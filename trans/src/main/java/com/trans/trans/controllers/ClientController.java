@@ -38,9 +38,7 @@ public class ClientController {
     @PostMapping("/add")
     public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client) {
         RoleEntity r = roleJpa.findByRoleLike("User_Role");
-        List<RoleEntity> rs = new ArrayList<>();
-        rs.add(r);
-        client.setRoles(rs);
+        client.setRole(r);
         clientsJpa.save(client);
         return ResponseEntity.ok(client);
     }

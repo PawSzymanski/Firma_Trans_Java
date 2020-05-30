@@ -52,13 +52,13 @@ public class ClientEntity {
     )
     private List<DiscountEntity> discounts;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
+    @ManyToOne(fetch = FetchType.EAGER)
+   /* @JoinTable(
             name = "kli_na_rol",
             joinColumns = { @JoinColumn(name = "kli_klient") },
             inverseJoinColumns = { @JoinColumn(name = "rol_role") }
-    )
-    private List<RoleEntity> roles;
+    )*/
+    private RoleEntity role;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
