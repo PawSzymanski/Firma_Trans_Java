@@ -10,4 +10,6 @@ public interface RoleJpa  extends JpaRepository<RoleEntity, Long> {
 
     @Query("select r from RoleEntity r left outer join r.user u where u.id = ?1")
     List<RoleEntity> findAllByUser(Long userId);
+
+    RoleEntity findByRoleLike(String role);
 }

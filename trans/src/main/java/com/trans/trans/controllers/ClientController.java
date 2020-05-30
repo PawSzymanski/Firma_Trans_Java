@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController()
@@ -36,6 +37,10 @@ public class ClientController {
 
     @PostMapping("/add")
     public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client) {
+        RoleEntity r = roleJpa.findByRoleLike("User_Role");
+        List<RoleEntity> rs = new ArrayList<>();
+        rs.add(r);
+        client.setRoles(rs);
         clientsJpa.save(client);
         return ResponseEntity.ok(client);
     }

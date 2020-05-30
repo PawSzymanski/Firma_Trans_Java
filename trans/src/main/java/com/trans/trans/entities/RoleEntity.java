@@ -29,5 +29,5 @@ public class RoleEntity {
     private List<ClientEntity> user;
 
     @Column(name = "rol_rola")
-    private String location;
+    private String role;
 }
