@@ -25,7 +25,7 @@ public class ReservationEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "kur_kurs")
-    private RoadPartEntity road;
+    private RoadEntity road;
 
     @Column(name = "odc_odcinek")
     private int routeSectionId;
