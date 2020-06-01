@@ -43,6 +43,9 @@ public class ClientEntity {
     @Column(name = "kli_blokada")
     private Boolean isBlocked;
 
+    @Column(name = "kli_points")
+    private int points;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

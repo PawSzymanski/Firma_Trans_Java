@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 @Getter
 public class LoyalitySystemEntity {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "nagroda_sequence")
     @SequenceGenerator(name = "nagroda_sequence", allocationSize = 1)

@@ -35,6 +35,18 @@ public class ClientController {
         return ResponseEntity.ok(roleJpa.findAllByUser(userId));
     }
 
+    @GetMapping("/getpoints/{clientName}")
+    public ResponseEntity<ClientEntity> getPoinst(@PathVariable String clientName){
+        return ResponseEntity.ok(clientsJpa.findByLogin(clientName));
+    }
+
+    @PostMapping("/addpoints")
+    public ResponseEntity<ClientEntity> addPoints(@RequestBody ClientEntity client){
+
+        System.out.println();
+        return ResponseEntity.ok(client);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client) {
 
@@ -59,5 +71,4 @@ public class ClientController {
         }
         return new ResponseEntity("bad password", HttpStatus.FORBIDDEN);
     }
-
 }
