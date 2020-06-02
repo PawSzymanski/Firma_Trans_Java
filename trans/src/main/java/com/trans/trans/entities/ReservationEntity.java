@@ -30,9 +30,6 @@ public class ReservationEntity {
     @Column(name = "odc_odcinek")
     private int routeSectionId;
 
-    @Column(name = "rez_punkty")
-    private int points;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "mie_na_rez",
