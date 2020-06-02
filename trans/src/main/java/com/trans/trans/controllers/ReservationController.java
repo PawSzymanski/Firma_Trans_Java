@@ -30,11 +30,10 @@ public class ReservationController {
     @PostMapping("/make")
     public ResponseEntity<ReservationEntity> add(@RequestBody ReservationDto body) {
         ReservationEntity res = new ReservationEntity();
-        res.setReservationStatus("UNPAID");
-        res.setRoad(roadPartJpa.findById(body.getRoadId()).get());
+       res.setReservationStatus("UNPAID");
+//        res.setRoad(roadPartJpa.findById(body.getRoadId()).get());
         res.setClientName(body.getClientName());
         reservationJpa.save(res);
-        clientsJpa.save(cli);
         return ResponseEntity.ok(res);
     }
 

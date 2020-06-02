@@ -2,14 +2,16 @@ package com.trans.trans.controllers;
 
 import com.trans.trans.dto.LoginDto;
 import com.trans.trans.entities.ClientEntity;
+import com.trans.trans.entities.ReservationEntity;
+import com.trans.trans.entities.RoadPartEntity;
 import com.trans.trans.entities.RoleEntity;
 import com.trans.trans.jpa.ClientsJpa;
+import com.trans.trans.jpa.ReservationJpa;
 import com.trans.trans.jpa.RoleJpa;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController()
@@ -19,6 +21,8 @@ public class ClientController {
     private ClientsJpa clientsJpa;
 
     private RoleJpa roleJpa;
+
+  //  private ReservationJpa;
 
     public ClientController(ClientsJpa clientsJpa, RoleJpa roleJpa) {
         this.clientsJpa = clientsJpa;
@@ -40,10 +44,24 @@ public class ClientController {
         return ResponseEntity.ok(clientsJpa.findByLogin(clientName));
     }
 
+
     @PostMapping("/addpoints")
     public ResponseEntity<ClientEntity> addPoints(@RequestBody ClientEntity client){
+        client.setPoints(client.getPoints() + 100);
+        clientsJpa.save(client);
+        return ResponseEntity.ok(client);
+    }
 
-        System.out.println();
+    @PostMapping("/usepoints")
+    public ResponseEntity<ClientEntity> usePoints(@RequestBody ClientEntity client){
+    //    ReservationController reservation = new ReservationController();
+        if(client.getPoints()<500){
+            return new ResponseEntity("not enaught points",HttpStatus.FORBIDDEN);
+        }else{
+            client.setPoints(client.getPoints() - 500);
+ //           reservationEntity
+        }
+        clientsJpa.save(client);
         return ResponseEntity.ok(client);
     }
 
