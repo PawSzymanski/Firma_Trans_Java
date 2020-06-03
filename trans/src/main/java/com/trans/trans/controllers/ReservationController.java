@@ -3,10 +3,7 @@ package com.trans.trans.controllers;
 import com.trans.trans.dto.ReservationDto;
 import com.trans.trans.entities.ClientEntity;
 import com.trans.trans.entities.ReservationEntity;
-import com.trans.trans.jpa.ClientsJpa;
-import com.trans.trans.jpa.LoyalitySystemJpa;
-import com.trans.trans.jpa.ReservationJpa;
-import com.trans.trans.jpa.RoadPartJpa;
+import com.trans.trans.jpa.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,20 +15,20 @@ public class ReservationController {
 
     private ReservationJpa reservationJpa;
 
-    private RoadPartJpa roadPartJpa;
+    private RoadJpa roadJpa;
 
     private ClientsJpa clientsJpa;
 
-    public ReservationController(ReservationJpa reservationJpa, RoadPartJpa roadPartJpa) {
+    public ReservationController(ReservationJpa reservationJpa, RoadJpa roadJpa) {
         this.reservationJpa = reservationJpa;
-        this.roadPartJpa = roadPartJpa;
+        this.roadJpa = roadJpa;
     }
 
     @PostMapping("/make")
     public ResponseEntity<ReservationEntity> add(@RequestBody ReservationDto body) {
         ReservationEntity res = new ReservationEntity();
-       res.setReservationStatus("UNPAID");
-        //res.setRoad(roadPartJpa.findById(body.getRoadId()).get());
+        res.setReservationStatus("UNPAID");
+        res.setRoad(roadJpa.findById(body.getRoadId()).get());
         res.setClientName(body.getClientName());
         reservationJpa.save(res);
         return ResponseEntity.ok(res);
