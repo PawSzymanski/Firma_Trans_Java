@@ -1,11 +1,9 @@
 package com.trans.trans.controllers;
 
 import com.trans.trans.dto.LoginDto;
-import com.trans.trans.entities.ClientEntity;
-import com.trans.trans.entities.ReservationEntity;
-import com.trans.trans.entities.RoadPartEntity;
-import com.trans.trans.entities.RoleEntity;
+import com.trans.trans.entities.*;
 import com.trans.trans.jpa.ClientsJpa;
+import com.trans.trans.jpa.PointsJpa;
 import com.trans.trans.jpa.ReservationJpa;
 import com.trans.trans.jpa.RoleJpa;
 import org.springframework.http.HttpStatus;
@@ -22,6 +20,7 @@ public class ClientController {
 
     private RoleJpa roleJpa;
 
+    private PointsJpa pointsJpa;
   //  private ReservationJpa;
 
     public ClientController(ClientsJpa clientsJpa, RoleJpa roleJpa) {
@@ -39,41 +38,17 @@ public class ClientController {
         return ResponseEntity.ok(roleJpa.findAllByUser(userId));
     }
 
-    @GetMapping("/getpoints/{clientName}")
-    public ResponseEntity<ClientEntity> getPoinst(@PathVariable String clientName){
-        return ResponseEntity.ok(clientsJpa.findByLogin(clientName));
-    }
-
-
-    @PostMapping("/addpoints")
-    public ResponseEntity<ClientEntity> addPoints(@RequestBody ClientEntity client){
-        client.setPoints(client.getPoints() + 100);
-        clientsJpa.save(client);
-        return ResponseEntity.ok(client);
-    }
-
-    @PostMapping("/usepoints")
-    public ResponseEntity<ClientEntity> usePoints(@RequestBody ClientEntity client){
-    //    ReservationController reservation = new ReservationController();
-        if(client.getPoints()<500){
-            return new ResponseEntity("not enaught points",HttpStatus.FORBIDDEN);
-        }else{
-            client.setPoints(client.getPoints() - 500);
- //           reservationEntity
-        }
-        clientsJpa.save(client);
-        return ResponseEntity.ok(client);
-    }
-
     @PostMapping("/add")
     public ResponseEntity<ClientEntity> add(@RequestBody ClientEntity client) {
-
+        PointsEntity points = new PointsEntity();
         if(client.getRole() == null) {
             RoleEntity r = roleJpa.findByRoleLike("User_Role");
             client.setRole(r);
         } else {
             client.setRole(roleJpa.findByRoleLike(client.getRole().getRole()));
         }
+        points.createWithUser(client);
+//        pointsJpa.save(points);
         clientsJpa.save(client);
         return ResponseEntity.ok(client);
     }
