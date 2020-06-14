@@ -41,4 +41,55 @@ public class TransApplicationTests {
         mockMvc.perform(get("/api/reservation/Marek")).andExpect(status().isOk());
     }
 
+    @Test
+    public void clientTest1() throws Exception{
+        mockMvc.perform(get("/api/clients/all")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void clientTest2() throws Exception{
+        mockMvc.perform(get("/api/clients/roles/1")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void clientTest3() throws Exception{
+        mockMvc.perform(post("/api/clients/add")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"id\":1, \"login\": \"test\", \"password\": \"test\", \"name\": \"test\", \"surname\": \"test\",\"email\": \"test@test.com\",\"phone\": 987654321}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void connetionTest1() throws Exception{
+        mockMvc.perform(get("/api/conntection/piwniczna/to/krakow")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void connetionTest2() throws Exception{
+        mockMvc.perform(get("/api/conntection/allTrips")).andExpect(status().isOk());
+    }
+    @Test
+    public void connetionTest3() throws Exception{
+        mockMvc.perform(get("/api/conntection/allConnections")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void pointsTest1() throws Exception{
+        mockMvc.perform(get("/api/points/get/jason")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void pointsTest2() throws Exception{
+        mockMvc.perform(post("/api/points/add")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"id\":1, \"login\": \"dlelito\", \"points\":300}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void vehicleTest1() throws Exception{
+        mockMvc.perform(get("/api/vehicle/1")).andExpect(status().isOk());
+    }
 }

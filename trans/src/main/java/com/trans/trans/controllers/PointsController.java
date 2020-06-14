@@ -44,6 +44,5 @@ public class PointsController {
         pointsEntity.setPoints(0);
         pointsJpa.save(pointsEntity);
         return ResponseEntity.ok(pointsEntity);
-
     }
 }
