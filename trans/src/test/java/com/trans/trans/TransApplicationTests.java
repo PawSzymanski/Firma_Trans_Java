@@ -62,16 +62,16 @@ public class TransApplicationTests {
 
     @Test
     public void connetionTest1() throws Exception{
-        mockMvc.perform(get("/api/conntection/piwniczna/to/krakow")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/connection/piwniczna/to/krakow")).andExpect(status().isOk());
     }
 
     @Test
     public void connetionTest2() throws Exception{
-        mockMvc.perform(get("/api/conntection/allTrips")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/connection/allTrips")).andExpect(status().isOk());
     }
     @Test
     public void connetionTest3() throws Exception{
-        mockMvc.perform(get("/api/conntection/allConnections")).andExpect(status().isOk());
+        mockMvc.perform(get("/api/connection/allConnections")).andExpect(status().isOk());
     }
 
     @Test
